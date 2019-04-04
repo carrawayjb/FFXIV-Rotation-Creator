@@ -1,0 +1,23 @@
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.drag-box {
+    width: 100%;
+    background: #ddd;
+    color: #666;
+    border-top: 1px solid #fafafa;
+    border-bottom: 1px solid #aaa;
+    text-align: center;
+    padding: .25rem 0;
+}
+
+.stats {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
