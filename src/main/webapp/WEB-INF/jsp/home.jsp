@@ -44,7 +44,7 @@
         </c:forEach>
     </datalist>
 
-    <div class="container-fluid d-flex">
+    <div class="container-fluid d-flex p-0">
         <div class="row w-100 no-gutters">
             <div class="col-2 no-gutters">
                 <div class="row no-gutters">
@@ -57,7 +57,14 @@
             </div>
             <div class="col-2 no-gutters">
                 <div class="row no-gutters">
-                    <form id="classes" class="d-flex flex-wrap">
+                    <form id="label" class="mx-auto mt-4">
+                        <h5 class="w-100 mb-0">Label</h5>
+                        <input type="text" name="label" data-lpignore="true" placeholder="Barrage + Empyreal Arrow"/>
+                    </form>
+                </div>
+                <div class="row no-gutters">
+                    <form id="classes" class="d-flex flex-wrap mx-auto mt-4">
+                        <h5 class="w-100 mb-0">Classes</h5>
                         <c:forEach items="${classes}" var="map">
                             <c:forEach items="${map}" var="entry">
                                 <div class="p-2"><input type="checkbox" name="${entry.key}"/> ${entry.value}</div>
@@ -66,14 +73,13 @@
                     </form>
                 </div>
                 <div class="row no-gutters">
-                    <form id="filters">
-                        <table>
-                            <tr><td><input type="text" name="filter-1" data-lpignore="true" placeholder="1st Filter"/></td></tr>
-                            <tr><td><input type="text" name="filter-2" data-lpignore="true" placeholder="2nd Filter"/></td></tr>
-                            <tr><td><input type="text" name="filter-3" data-lpignore="true" placeholder="3rd Filter"/></td></tr>
-                            <tr><td><input type="text" name="filter-4" data-lpignore="true" placeholder="4th Filter"/></td></tr>
-                            <tr><td><input type="text" name="filter-5" data-lpignore="true" placeholder="5th Filter"/></td></tr>
-                        </table>
+                    <form id="filters" class="mx-auto mt-4">
+                        <h5 class="w-100">Filters</h5>
+                        <input type="text" name="filter-1" data-lpignore="true" placeholder="1st Filter"/>
+                        <input type="text" name="filter-2" data-lpignore="true" placeholder="2nd Filter"/>
+                        <input type="text" name="filter-3" data-lpignore="true" placeholder="3rd Filter"/>
+                        <input type="text" name="filter-4" data-lpignore="true" placeholder="4th Filter"/>
+                        <input type="text" name="filter-5" data-lpignore="true" placeholder="5th Filter"/>
                     </form>
                 </div>
 
@@ -83,9 +89,10 @@
                     Stuff here
                 </div>
             </div>
-            <div class="col-3 no-gutters">
+            <div class="col-3 no-gutters p-3">
                 <div class="row no-gutters">
-                    <form id="output" class="w-100">
+                    <h5 class="w-100 mb-0">Output</h5>
+                    <form id="output" class="w-100 mt-2">
                         <textarea class="w-100" rows="25" placeholder="Output generates here as you work"></textarea>
                     </form>
                 </div>

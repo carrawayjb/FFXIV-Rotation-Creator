@@ -6,6 +6,16 @@
     user-select: none;
 }
 
+h5 {
+    margin-bottom: .25rem;
+}
+
+textarea {
+    padding: .2rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
 .drag-box {
     width: 100%;
     background: #ddd;
@@ -14,6 +24,22 @@
     border-bottom: 1px solid #aaa;
     text-align: center;
     padding: .25rem 0;
+}
+
+#label, #classes, #filters {
+    width: 90%;
+}
+
+#classes div {
+    flex: 1 0 33.3%;
+}
+
+#label input, #filters input {
+    width: 100%;
+    margin-top: .35rem;
+    padding: .2rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 .stats {

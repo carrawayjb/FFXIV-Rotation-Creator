@@ -1,8 +1,10 @@
 var numLabel = 1;
+var labels = [];
 
 function addRow() {
     var uuid = genUUID();
     $(".drag-container").append("<div class='drag-box w-100' id='" + uuid + "'>Label " + numLabel++ + "</div>");
+    labels[uuid] = getJSON();
     updateDragonfly();
 }
 
