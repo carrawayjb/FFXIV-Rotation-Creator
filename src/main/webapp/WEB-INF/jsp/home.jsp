@@ -30,6 +30,8 @@
                    return false;
                }
             });
+
+            $("ul.label-container").css("height", ($(window).height() * 0.93));
         });
     </script>
 
@@ -56,7 +58,9 @@
         <div class="row w-100 no-gutters">
             <div class="col-2 no-gutters">
                 <div class="row no-gutters">
-                    <input type="button" id="append-row" onclick="addRow()" value="Add Row" />
+                    <input type="button" class="add-delete" id="prepend-row" onclick="addRow('top')" value="Prepend Row" />
+                    <input type="button" class="add-delete" id="append-row" onclick="addRow('btm')" value="Append Row" />
+                    <input type="button" class="add-delete" id="delete-row" onclick="deleteRow()" value="Delete Row" />
                 </div>
                 <div class="row no-gutters">
                     <ul class="label-container w-100">

@@ -61,25 +61,48 @@ body.dragging, body.dragging * {
 ul.label-container {
     list-style-type: none;
     padding-left: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background: #666;
 }
 
 ul.label-container li {
-    background: #e0e0e0;
-    padding: .75rem 1.25rem;
-    border-top: 1px solid #fafafa;
-    border-bottom: 1px solid #999;
+    background: #3d4852;
+    padding: .5rem 1.25rem;
+    min-height: 2rem;
+    border-top: 1px solid #505a63;
+    border-bottom: 1px solid #303941;
+    color: #fff;
 }
 
 ul.label-container li:hover {
-    background: #cdcdcd;
+    background: #364049;
 }
 
 ul.label-container li:active {
-    background: #c0c0c0;
+    background: #303941;
 }
 
 ul.label-container li.active {
-    background: #c0c0c0;
+    background: #303941;
+}
+
+.add-delete {
+    background: #303941;
+    color: #c4c8cb;
+    font-size: .85rem;
+    padding: .5rem;
+    flex: 1 0 33.3%;
+    border: none;
+    outline: none;
+}
+
+.add-delete:hover {
+    background: #2a3239;
+}
+
+.add-delete:active {
+    background: #242b31;
 }
 
 #success-alert {

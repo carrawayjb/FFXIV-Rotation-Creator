@@ -2,16 +2,29 @@ var fields = [];
 var filters = getFiltersJSON();
 var classes = getClassesJSON();
 
-function addRow() {
+function addRow(pos) {
     var uuid = genUUID();
-    $(".label-container").append("<li class='labels w-100' id='" + uuid + "' onclick='setUUID(this)'>New Label</li>");
+
+    if(pos === "top") {
+        $(".label-container").prepend("<li class='labels w-100' id='" + uuid + "' onclick='setUUID(this)'></li>");
+    } else if(pos === "btm") {
+        $(".label-container").append("<li class='labels w-100' id='" + uuid + "' onclick='setUUID(this)'></li>");
+    }
     $("#uuid").val(uuid);
+    $("#" + uuid).focus();
     $("ul.label-container").sortable();
 
     fields[uuid] = getJSON();
     setUUID($("#" + uuid));
     loadFields();
     saveFields();
+    $("#fld-alias").focus();
+}
+
+function deleteRow() {
+    var uuid = $("#uuid").val();
+    $("#" + uuid).remove();
+    $("ul.label-container").sortable();
 }
 
 function setUUID(li) {
@@ -32,10 +45,6 @@ function saveFields() {
     var fieldsJSON = $.parseJSON(fields[uuid]);
     var filtersJSON = $.parseJSON(filters);
     var classesJSON = $.parseJSON(classes);
-
-    if($("#fld-alias").val() === "") {
-        $("fld-alias").val("Can not be empty.");
-    }
 
     $("input.fields").each(function () {
        if($(this).attr("id").indexOf("fld-") >= 0) {
@@ -98,10 +107,6 @@ function loadFields() {
     var fieldsJSON = $.parseJSON(fields[uuid]);
     var filtersJSON = $.parseJSON(filters);
     var classesJSON = $.parseJSON(classes);
-
-    if(fieldsJSON.alias === "") {
-        fieldsJSON.alias = $("#" + uuid).text();
-    }
 
     $("#" + uuid).html(fieldsJSON.alias);
 
