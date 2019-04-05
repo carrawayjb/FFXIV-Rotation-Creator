@@ -47,3 +47,45 @@ textarea {
     bottom: 0;
     left: 0;
 }
+
+body.dragging, body.dragging * {
+    cursor: move !important;
+}
+
+.dragged {
+    position: absolute;
+    opacity: 0.5;
+    z-index: 2000;
+}
+
+ul.label-container {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul.label-container li {
+    background: #e0e0e0;
+    padding: .75rem 1.25rem;
+    border-top: 1px solid #fafafa;
+    border-bottom: 1px solid #999;
+}
+
+ul.label-container li:hover {
+    background: #cdcdcd;
+}
+
+ul.label-container li:active {
+    background: #c0c0c0;
+}
+
+ul.label-container li.active {
+    background: #c0c0c0;
+}
+
+#success-alert {
+    width: 100%;
+    height: 5px;
+    display: none;
+    position: absolute;
+    bottom: 1rem;
+}

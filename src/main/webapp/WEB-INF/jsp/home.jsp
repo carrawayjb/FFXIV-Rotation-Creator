@@ -15,13 +15,20 @@
 
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/webjars/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="/js/dragonfly.js"></script>
+    <script src="/js/jquery-sortable.js"></script>
     <script src="/js/functions.js"></script>
 
     <script>
         $(document).ready(function (){
             $("form :input").change(function() {
-                $("#output textarea").val(generateOutput($("#classes").serialize(), $("#filters").serialize()));
+                saveFields();
+            });
+
+            $("input").on("keypress", function(e) {
+               if(e.keyCode === 13) {
+                   saveFields();
+                   return false;
+               }
             });
         });
     </script>
@@ -44,6 +51,7 @@
         </c:forEach>
     </datalist>
 
+    <input type="hidden" id="uuid">
     <div class="container-fluid d-flex p-0">
         <div class="row w-100 no-gutters">
             <div class="col-2 no-gutters">
@@ -51,15 +59,15 @@
                     <input type="button" id="append-row" onclick="addRow()" value="Add Row" />
                 </div>
                 <div class="row no-gutters">
-                    <div class="drag-container w-100">
-                    </div>
+                    <ul class="label-container w-100">
+                    </ul>
                 </div>
             </div>
             <div class="col-2 no-gutters">
                 <div class="row no-gutters">
                     <form id="label" class="mx-auto mt-4">
-                        <h5 class="w-100 mb-0">Label</h5>
-                        <input type="text" name="label" data-lpignore="true" placeholder="Barrage + Empyreal Arrow"/>
+                        <h5 class="w-100 mb-0">Label Name</h5>
+                        <input type="text" class="fields" id="fld-alias" name="label" data-lpignore="true" placeholder="Barrage + Empyreal Arrow"/>
                     </form>
                 </div>
                 <div class="row no-gutters">
@@ -67,7 +75,7 @@
                         <h5 class="w-100 mb-0">Classes</h5>
                         <c:forEach items="${classes}" var="map">
                             <c:forEach items="${map}" var="entry">
-                                <div class="p-2"><input type="checkbox" name="${entry.key}"/> ${entry.value}</div>
+                                <div class="p-2"><input type="checkbox" class="classes" id="fld-${entry.key}" data-value="${entry.key}"/> ${entry.value}</div>
                             </c:forEach>
                         </c:forEach>
                     </form>
@@ -75,11 +83,11 @@
                 <div class="row no-gutters">
                     <form id="filters" class="mx-auto mt-4">
                         <h5 class="w-100">Filters</h5>
-                        <input type="text" name="filter-1" data-lpignore="true" placeholder="1st Filter"/>
-                        <input type="text" name="filter-2" data-lpignore="true" placeholder="2nd Filter"/>
-                        <input type="text" name="filter-3" data-lpignore="true" placeholder="3rd Filter"/>
-                        <input type="text" name="filter-4" data-lpignore="true" placeholder="4th Filter"/>
-                        <input type="text" name="filter-5" data-lpignore="true" placeholder="5th Filter"/>
+                        <input type="text" class="filters" id="fld-filterone" name="filterone" data-lpignore="true" placeholder="1st Filter"/>
+                        <input type="text" class="filters" id="fld-filtertwo" name="filtertwo" data-lpignore="true" placeholder="2nd Filter"/>
+                        <input type="text" class="filters" id="fld-filterthree" name="filterthree" data-lpignore="true" placeholder="3rd Filter"/>
+                        <input type="text" class="filters" id="fld-filterfour" name="filterfour" data-lpignore="true" placeholder="4th Filter"/>
+                        <input type="text" class="filters" id="fld-filterfive" name="filterfive" data-lpignore="true" placeholder="5th Filter"/>
                     </form>
                 </div>
 
@@ -109,8 +117,7 @@
         </div>
     </div>
 
-
-
-
+    <div class="alert alert-success" id="success-alert">
+    </div>
 </body>
 </html>
